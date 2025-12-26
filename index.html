@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تاج الظل | فخامة المظلات والسواتر</title>
+    
+    <!-- Google Fonts: Tajawal & Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Tajawal', 'sans-serif'],
+              cairo: ['Cairo', 'sans-serif'],
+            },
+            colors: {
+              gold: {
+                100: '#FDFCF5', 200: '#F8F3D7', 300: '#F0E2A3', 400: '#E6CC66',
+                500: '#D4AF37', 600: '#AA8C2C', 700: '#806921', 800: '#554616', 900: '#2B230B',
+              },
+              dark: { 900: '#0a0a0a', 800: '#121212', 700: '#1a1a1a', 950: '#050505' }
+            },
+            animation: {
+              'fade-in': 'fadeIn 1s ease-out forwards',
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'pulse-gold': 'pulseGold 2s infinite',
+            },
+            keyframes: {
+              fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+              fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+              pulseGold: {
+                '0%': { boxShadow: '0 0 0 0 rgba(212, 175, 55, 0.4)' },
+                '70%': { boxShadow: '0 0 0 20px rgba(212, 175, 55, 0)' },
+                '100%': { boxShadow: '0 0 0 0 rgba(212, 175, 55, 0)' },
+              },
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #050505; }
+      ::-webkit-scrollbar-thumb { background: #222; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+      
+      body {
+        background-color: #050505;
+        transition: all 0.5s ease;
+      }
+
+      /* --- Light Mode Overrides --- */
+      .light-mode body {
+        background-color: #f8fafc;
+        color: #0f172a;
+      }
+
+      .light-mode .text-white { color: #0f172a !important; }
+      .light-mode .text-gray-100 { color: #0f172a !important; }
+      .light-mode .text-gray-200 { color: #1e293b !important; }
+      .light-mode .text-gray-300 { color: #334155 !important; }
+      .light-mode .text-gray-400 { color: #475569 !important; }
+      
+      /* Keep gold text as gold even in light mode for specific classes */
+      .light-mode .text-gold-500 { color: #AA8C2C !important; }
+      .light-mode .text-gold-400 { color: #806921 !important; }
+
+      .light-mode .bg-dark-950 { background-color: #ffffff !important; }
+      .light-mode .bg-dark-900 { background-color: #f1f5f9 !important; }
+      .light-mode .bg-dark-800 { background-color: #f8fafc !important; }
+      .light-mode .bg-black { background-color: #f1f5f9 !important; }
+      .light-mode .bg-dark-900\/60 { background-color: rgba(255, 255, 255, 0.8) !important; }
+      .light-mode .bg-dark-900\/40 { background-color: rgba(255, 255, 255, 0.7) !important; }
+      .light-mode .bg-dark-900\/98 { background-color: rgba(255, 255, 255, 0.98) !important; }
+
+      .light-mode .border-white\/10 { border-color: rgba(0, 0, 0, 0.1) !important; }
+      .light-mode .border-white\/5 { border-color: rgba(0, 0, 0, 0.05) !important; }
+      .light-mode .border-gold-500\/20 { border-color: rgba(170, 140, 44, 0.3) !important; }
+      .light-mode .border-gold-900\/30 { border-color: rgba(170, 140, 44, 0.2) !important; }
+
+      .light-mode .shadow-2xl { shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1) !important; }
+      
+      /* Handle Gradients in Hero and Video Showcase */
+      .light-mode .from-dark-950 { --tw-gradient-from: #ffffff !important; }
+      .light-mode .via-dark-950\/80 { --tw-gradient-to: rgba(255, 255, 255, 0.8) !important; }
+      .light-mode .to-dark-950 { --tw-gradient-to: #ffffff !important; }
+      .light-mode .from-dark-900 { --tw-gradient-from: #f1f5f9 !important; }
+      
+      /* Fix for Gold Text with Gradient (Don't let it turn black) */
+      .light-mode .text-transparent.bg-clip-text {
+        color: transparent !important;
+      }
+
+      /* Fix inputs in Contact */
+      .light-mode input, .light-mode textarea, .light-mode select {
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+        border-color: #e2e8f0 !important;
+      }
+
+      .perspective-card { perspective: 1200px; }
+      .tilt-inner { transform-style: preserve-3d; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "swiper": "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs",
+    "framer-motion": "https://esm.sh/framer-motion@11.11.11?external=react,react-dom"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="text-white font-sans antialiased overflow-x-hidden">
+    <div id="root"></div>
+    <script type="module" src="index.tsx"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
